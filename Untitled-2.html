@@ -1,0 +1,44 @@
+function ProductCard({ imageSrc, title, currentPrice, originalPrice }) {
+  return (
+    <div className="flex-item">
+      <img src={imageSrc} alt={title} />
+      <p>{title}</p>
+      <h4 className="inline-paragraph">${currentPrice}</h4>
+      <h4 className="inline-paragraph" id="cancel">${originalPrice}</h4>
+      <button>Add to cart</button>
+    </div>
+  );
+}
+
+function NewArrivals() {
+  const products = [
+    {
+      id: 1,
+      imageSrc: "/images/Rectangle392.png",
+      title: "Girls pink cotton set spot 2 piece and pant",
+      currentPrice: 299,
+      originalPrice: 499
+    },
+    // Add more products...
+  ];
+
+  return (
+    <div className="arrive">
+      <h2>NEW ARRIVALS</h2>
+      <div className="sort-container">
+        <label htmlFor="product-sort">Sort by:</label>
+        <select id="product-sort" name="dropdown_name" className="dropdown">
+          <option value="option1">New Arrivals</option>
+          <option value="option2">Female baby wears</option>
+          <option value="option3">Male baby wears</option>
+        </select>
+      </div>
+
+      <div className="flex">
+        {products.map(product => (
+          <ProductCard key={product.id} {...product} />
+        ))}
+      </div>
+    </div>
+  );
+}
